@@ -334,8 +334,12 @@ overflow: "hidden",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: "80px",
-        padding: "40px 70px",
+        gap: window.innerWidth < 768 ? "20px" : "80px",
+        padding: window.innerWidth < 768 ? "20px" : "40px 70px",
+flexDirection:
+  window.innerWidth < 768 ? "column" : "row",
+textAlign:
+  window.innerWidth < 768 ? "center" : "left",
       }}
     >
 
@@ -357,7 +361,8 @@ overflow: "hidden",
   position: "relative",
   zIndex: 2,
   maxWidth: "700px",
-  marginLeft: "-920px",
+  marginLeft: window.innerWidth < 768 ? "0" : "-920px",
+  width: "100%",
 }}
       >
 
@@ -401,7 +406,7 @@ overflow: "hidden",
 animate={{ opacity: 1, y: 0 }}
 transition={{ duration: 1.4 }}
           style={{
-            fontSize: "90px",
+            fontSize: window.innerWidth < 768 ? "48px" : "90px",
             lineHeight: "0.9",
             marginTop: "35px",
             color: "white",
@@ -558,7 +563,10 @@ letterSpacing: "1px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    minWidth: "180px",
+    minWidth:
+  window.innerWidth < 768
+    ? "100px"
+    : "180px",
   }}
 >
       <h1
@@ -647,6 +655,10 @@ animation: "zoom 18s ease-in-out infinite",
           background: "rgba(2,6,23,0.45)",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
           flexWrap: "wrap",
+          padding:
+  window.innerWidth < 768
+    ? "15px 4%"
+    : "20px 6%",
           gap: "20px",
         }}
       >
@@ -799,7 +811,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
          
 <h1
   style={{
-    fontSize: "100px",
+    fontSize: window.innerWidth < 768 ? "52px" : "100px",
     lineHeight: 1,
     fontWeight: "900",
     textShadow: "0 0 30px rgba(59,130,246,0.4)",
@@ -965,7 +977,10 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
               src={item.image}
               style={{
                 width: "100%",
-                height: "300px",
+                height:
+  window.innerWidth < 768
+    ? "220px"
+    : "300px",
                 objectFit: "cover",
               }}
             />
@@ -1235,7 +1250,10 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
     <motion.section id="contact"
     initial={{ opacity: 1, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1, }} transition={{ duration: 1.2, ease: "easeOut", }} viewport={{ once: false, amount: 0.2 }}
         style={{
-          padding: "80px 6%",
+          padding:
+  window.innerWidth < 768
+    ? "50px 4%"
+    : "80px 6%",
           background: "rgba(2,6,23,0.55)",
           backdropFilter: "blur(12px)",
         }}
