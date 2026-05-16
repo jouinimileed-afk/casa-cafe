@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Modal from "react-modal";
 import toast, { Toaster } from "react-hot-toast";
 import siteConfig from "./siteConfig";
-import useResponsive from "./useResponsive";
+
 
 
 
@@ -56,11 +56,29 @@ export default function App() {
   
 const [showIntro, setShowIntro] = useState(true);
 
-const {
-  isMobile,
-  isTablet,
-  isDesktop,
-} = useResponsive();
+const [isMobile, setIsMobile] = useState(
+  window.innerWidth < 768
+);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  window.addEventListener(
+    "resize",
+    handleResize
+  );
+
+  return () => {
+    window.removeEventListener(
+      "resize",
+      handleResize
+    );
+  };
+}, []);
+
+
 
  
 
@@ -167,6 +185,8 @@ const [products, setProducts] = useState([
     category: "",
     image: "",
   });
+
+  
 
   useEffect(() => {
     setTimeout(() => {
