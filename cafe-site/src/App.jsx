@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Modal from "react-modal";
 import toast, { Toaster } from "react-hot-toast";
 import siteConfig from "./siteConfig";
+import useResponsive from "./useResponsive";
 
 
 
