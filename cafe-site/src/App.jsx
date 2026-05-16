@@ -705,7 +705,16 @@ width: "100%",
         </h1>
 
        
-<div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
+<div
+  style={{
+    display: "flex",
+    gap: isMobile ? "8px" : "15px",
+    alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    width: "100%",
+  }}
+>
 
   <a href="#home" style={navLink}>Home</a>
   <a href="#menu" style={navLink}>Menu</a>
@@ -992,11 +1001,12 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
 
 
         style={{
-          padding: "0 6% 80px",
+          padding: isMobile
+  ? "120px 5% 80px"
+  : "0 6% 80px",
           display: "grid",
-          gridTemplateColumns: isMobile
-  ? "1fr"
-  : "repeat(auto-fit,minmax(300px,1fr))",
+          gridTemplateColumns:
+  "repeat(auto-fit,minmax(260px,1fr))",
           gap: "30px",
         }}
       >
@@ -1355,7 +1365,9 @@ textShadow: "0 0 25px rgba(59,130,246,0.5)",
 }
 
 const btn = {
-  padding: "14px 25px",
+  padding: window.innerWidth < 768
+    ? "10px 14px"
+    : "14px 25px",
   borderRadius: "15px",
   border: "1px solid rgba(255,255,255,0.1)",
   background: siteConfig.navButtonColor,
