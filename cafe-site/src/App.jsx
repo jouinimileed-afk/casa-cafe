@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Modal from "react-modal";
 import toast, { Toaster } from "react-hot-toast";
 import siteConfig from "./siteConfig";
-const isMobile = window.innerWidth < 768;
+
 
 
 
@@ -55,7 +55,13 @@ export default function App() {
   
 const [showIntro, setShowIntro] = useState(true);
 
+const isMobile = isMobile;
+const isTablet =
+  window.innerWidth >= 768 &&
+  window.innerWidth < 1024;
 
+const isDesktop =
+  window.innerWidth >= 1024;
 
  
 
@@ -335,12 +341,12 @@ overflow: "hidden",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: window.innerWidth < 768 ? "20px" : "80px",
-        padding: window.innerWidth < 768 ? "20px" : "40px 70px",
+        gap: isMobile ? "20px" : "80px",
+        padding: isMobile? "20px" : "40px 70px",
 flexDirection:
-  window.innerWidth < 768 ? "column" : "row",
+  isMobile ? "column" : "row",
 textAlign:
-  window.innerWidth < 768 ? "center" : "left",
+  isMobile? "center" : "left",
       }}
     >
 
@@ -407,7 +413,7 @@ textAlign:
 animate={{ opacity: 1, y: 0 }}
 transition={{ duration: 1.4 }}
           style={{
-            fontSize: window.innerWidth < 768 ? "48px" : "90px",
+            fontSize: isMobile? "48px" : "90px",
             lineHeight: "0.9",
             marginTop: "35px",
             color: "white",
@@ -501,12 +507,25 @@ whileTap={{ scale: 0.95 }}
 
 onClick={() => setShowIntro(false)}
   style={{
-    padding: "20px 42px",
+    padding:
+isMobile
+? "14px 24px"
+: "20px 42px",
+
+fontSize:
+isMobile
+? "16px"
+: "20px",
+
+width:
+isMobile
+? "100%"
+: "auto",
     borderRadius: "18px",
     border: "none",
     background: siteConfig.buttons.mainButtonColor,
     color: "white",
-    fontSize: "20px",
+    
     fontWeight: "700",
     boxShadow:
       "0 0 35px rgba(59,130,246,0.45)",
@@ -567,7 +586,7 @@ letterSpacing: "1px",
     flexDirection: "column",
     alignItems: "center",
     minWidth:
-  window.innerWidth < 768
+ isMobile
     ? "100px"
     : "180px",
   }}
@@ -651,7 +670,9 @@ justifyContent: "space-between",
 alignItems: "center",
 flexDirection:
 isMobile ? "column" : "row",
-gap: "10px",
+gap: isMobile ? "8px" : "15px",
+flexWrap: "wrap",
+justifyContent: "center",
           position: "fixed",
           top: 0,
           left: 0,
@@ -662,7 +683,7 @@ gap: "10px",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
           
           padding:
-  window.innerWidth < 768
+  isMobile
     ? "15px 4%"
     : "20px 6%",
           
@@ -781,7 +802,12 @@ gap: "10px",
 initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1, }} transition={{ duration: 1.2, ease: "easeOut", }} viewport={{ once: false, amount: 0.2 }}
 
         style={{
-          padding: "120px 6% 0px",
+          padding:
+isMobile
+? "100px 5% 0"
+: isTablet
+? "110px 6% 0"
+: "120px 6% 0",
           minHeight: "100dvh",
           display: "flex",
           alignItems: "center",
@@ -817,7 +843,16 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
          
 <h1
   style={{
-    fontSize: isMobile ? "52px" : "100px",
+    fontSize:
+isMobile
+? "42px"
+: isTablet
+? "70px"
+: "100px",
+
+lineHeight: "1.1",
+wordBreak: "break-word",
+overflowWrap: "break-word",
     lineHeight: 1,
     fontWeight: "900",
     textShadow: "0 0 30px rgba(59,130,246,0.4)",
@@ -962,7 +997,12 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
         style={{
           padding: "0 6% 80px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
+          gridTemplateColumns:
+isMobile
+? "1fr"
+: isTablet
+? "repeat(2,1fr)"
+: "repeat(auto-fit,minmax(300px,1fr))",
           gap: "30px",
         }}
       >
@@ -984,7 +1024,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
               style={{
                 width: "100%",
                 height:
-  window.innerWidth < 768
+ isMobile
     ? "220px"
     : "300px",
                 objectFit: "cover",
@@ -1169,7 +1209,10 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
           <div
             style={{
               background: card,
-              padding: "40px",
+              padding:
+isMobile
+? "22px"
+: "40px",
               borderRadius: "30px",
               backdropFilter: "blur(12px)",
               border: "1px solid rgba(255,255,255,0.08)",
@@ -1257,7 +1300,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
     initial={{ opacity: 1, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1, }} transition={{ duration: 1.2, ease: "easeOut", }} viewport={{ once: false, amount: 0.2 }}
         style={{
           padding:
-  window.innerWidth < 768
+  isMobile
     ? "50px 4%"
     : "80px 6%",
           background: "rgba(2,6,23,0.55)",
@@ -1269,7 +1312,12 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
             textAlign: "center",
             marginBottom: "50px",
             
-fontSize: "50px",
+fontSize:
+isMobile
+? "34px"
+: isTablet
+? "42px"
+: "50px",
 color: "white",
 textShadow: "0 0 25px rgba(59,130,246,0.5)",
 
