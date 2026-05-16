@@ -654,9 +654,10 @@ animation: "zoom 18s ease-in-out infinite",
          display: "flex",
 justifyContent: "space-between",
 alignItems: "center",
-flexDirection:
-isMobile ? "column" : "row",
-gap: "10px",
+flexDirection: isMobile ? "column" : "row",
+gap: isMobile ? "15px" : "10px",
+flexWrap: "wrap",
+width: "100%",
           position: "fixed",
           top: 0,
           left: 0,
@@ -675,7 +676,7 @@ gap: "10px",
       >
         <h1
           style={{
-            fontSize: "45px",
+            fontSize: isMobile ? "28px" : "45px",
             color: "white",
             letterSpacing: "2px",
           }}
@@ -789,7 +790,12 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
           padding: "120px 6% 0px",
           minHeight: "100dvh",
           display: "flex",
-          alignItems: "center",
+alignItems: "center",
+justifyContent: "center",
+textAlign: isMobile ? "center" : "left",
+padding: isMobile
+  ? "140px 5% 40px"
+  : "120px 6% 0px",
         }}
       >
         <motion.div
@@ -822,7 +828,8 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
          
 <h1
   style={{
-    fontSize: isMobile ? "52px" : "100px",
+    fontSize: isMobile ? "42px" : "100px",
+textAlign: isMobile ? "center" : "left",
     lineHeight: 1,
     fontWeight: "900",
     textShadow: "0 0 30px rgba(59,130,246,0.4)",
@@ -967,7 +974,9 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
         style={{
           padding: "0 6% 80px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
+          gridTemplateColumns: isMobile
+  ? "1fr"
+  : "repeat(auto-fit,minmax(300px,1fr))",
           gap: "30px",
         }}
       >
@@ -988,10 +997,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
               src={item.image}
               style={{
                 width: "100%",
-                height:
-  window.innerWidth < 768
-    ? "220px"
-    : "300px",
+   height: isMobile ? "220px" : "300px",
                 objectFit: "cover",
               }}
             />
@@ -1274,7 +1280,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
             textAlign: "center",
             marginBottom: "50px",
             
-fontSize: "50px",
+fontSize: isMobile ? "34px" : "50px",
 color: "white",
 textShadow: "0 0 25px rgba(59,130,246,0.5)",
 
