@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Modal from "react-modal";
 import toast, { Toaster } from "react-hot-toast";
 import siteConfig from "./siteConfig";
+const isMobile = window.innerWidth < 768;
 
 
 
@@ -361,7 +362,7 @@ textAlign:
   position: "relative",
   zIndex: 2,
   maxWidth: "700px",
-  marginLeft: window.innerWidth < 768 ? "0" : "-920px",
+  justifyContent: "center",
   width: "100%",
 }}
       >
@@ -428,7 +429,8 @@ transition={{ duration: 1.4 }}
 
         <div
           style={{
-            width: "420px",
+            width: isMobile ? "100%" : "420px",
+maxWidth: "100%" ,
             height: "1px",
             background:
               "rgba(96,165,250,0.3)",
@@ -483,8 +485,9 @@ transition={{ duration: 1.4 }}
         <div
           style={{
             display: "flex",
-            gap: "28px",
-            marginTop: "35px",
+flexDirection: isMobile ? "column" : "row",
+gap: "20px",
+marginTop: "35px",
           }}
         >
 
@@ -604,7 +607,7 @@ letterSpacing: "1px",
   return (
     <div
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
 overflowX: "hidden",
 
 
@@ -643,9 +646,12 @@ animation: "zoom 18s ease-in-out infinite",
       <nav
         style={{
           padding: "20px 6%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+         display: "flex",
+justifyContent: "space-between",
+alignItems: "center",
+flexDirection:
+isMobile ? "column" : "row",
+gap: "10px",
           position: "fixed",
           top: 0,
           left: 0,
@@ -654,12 +660,12 @@ animation: "zoom 18s ease-in-out infinite",
           backdropFilter: "blur(12px)",
           background: "rgba(2,6,23,0.45)",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
-          flexWrap: "wrap",
+          
           padding:
   window.innerWidth < 768
     ? "15px 4%"
     : "20px 6%",
-          gap: "20px",
+          
         }}
       >
         <h1
@@ -776,7 +782,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
 
         style={{
           padding: "120px 6% 0px",
-          height: "100vh",
+          minHeight: "100dvh",
           display: "flex",
           alignItems: "center",
         }}
@@ -811,7 +817,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
          
 <h1
   style={{
-    fontSize: window.innerWidth < 768 ? "52px" : "100px",
+    fontSize: isMobile ? "52px" : "100px",
     lineHeight: 1,
     fontWeight: "900",
     textShadow: "0 0 30px rgba(59,130,246,0.4)",
