@@ -28,6 +28,5 @@ export default function useResponsive() {
       screenWidth >= 768 &&
       screenWidth < 1024,
     isDesktop: screenWidth >= 1024,
-    width: screenWidth,
   };
 }
