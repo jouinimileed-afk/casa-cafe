@@ -1001,14 +1001,19 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
 
 
         style={{
-          padding: isMobile
-  ? "120px 5% 80px"
-  : "0 6% 80px",
-          display: "grid",
-          gridTemplateColumns:
-  "repeat(auto-fit,minmax(260px,1fr))",
-          gap: "30px",
-        }}
+  padding: isMobile
+    ? "40px 5% 80px"
+    : "0 6% 80px",
+
+  display: "grid",
+
+  gridTemplateColumns:
+    "repeat(auto-fit,minmax(250px,1fr))",
+
+  gap: "20px",
+
+  width: "100%",
+}}
       >
         {filteredProducts.map((item) => (
           <motion.div
@@ -1027,7 +1032,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
               src={item.image}
               style={{
                 width: "100%",
-   height: isMobile ? "220px" : "300px",
+   height: isMobile ? "180px" : "300px",
                 objectFit: "cover",
               }}
             />
