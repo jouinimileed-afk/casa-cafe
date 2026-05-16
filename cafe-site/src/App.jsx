@@ -55,7 +55,8 @@ export default function App() {
   
 const [showIntro, setShowIntro] = useState(true);
 
-const isMobile = isMobile;
+const isMobile = window.innerWidth < 768;
+
 const isTablet =
   window.innerWidth >= 768 &&
   window.innerWidth < 1024;
@@ -341,12 +342,12 @@ overflow: "hidden",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        gap: isMobile ? "20px" : "80px",
-        padding: isMobile? "20px" : "40px 70px",
+        gap: window.innerWidth < 768 ? "20px" : "80px",
+        padding: window.innerWidth < 768 ? "20px" : "40px 70px",
 flexDirection:
-  isMobile ? "column" : "row",
+  window.innerWidth < 768 ? "column" : "row",
 textAlign:
-  isMobile? "center" : "left",
+  window.innerWidth < 768 ? "center" : "left",
       }}
     >
 
@@ -413,7 +414,7 @@ textAlign:
 animate={{ opacity: 1, y: 0 }}
 transition={{ duration: 1.4 }}
           style={{
-            fontSize: isMobile? "48px" : "90px",
+            fontSize: window.innerWidth < 768 ? "48px" : "90px",
             lineHeight: "0.9",
             marginTop: "35px",
             color: "white",
@@ -507,25 +508,12 @@ whileTap={{ scale: 0.95 }}
 
 onClick={() => setShowIntro(false)}
   style={{
-    padding:
-isMobile
-? "14px 24px"
-: "20px 42px",
-
-fontSize:
-isMobile
-? "16px"
-: "20px",
-
-width:
-isMobile
-? "100%"
-: "auto",
+    padding: "20px 42px",
     borderRadius: "18px",
     border: "none",
     background: siteConfig.buttons.mainButtonColor,
     color: "white",
-    
+    fontSize: "20px",
     fontWeight: "700",
     boxShadow:
       "0 0 35px rgba(59,130,246,0.45)",
@@ -586,7 +574,7 @@ letterSpacing: "1px",
     flexDirection: "column",
     alignItems: "center",
     minWidth:
- isMobile
+  window.innerWidth < 768
     ? "100px"
     : "180px",
   }}
@@ -670,9 +658,7 @@ justifyContent: "space-between",
 alignItems: "center",
 flexDirection:
 isMobile ? "column" : "row",
-gap: isMobile ? "8px" : "15px",
-flexWrap: "wrap",
-justifyContent: "center",
+gap: "10px",
           position: "fixed",
           top: 0,
           left: 0,
@@ -683,7 +669,7 @@ justifyContent: "center",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
           
           padding:
-  isMobile
+  window.innerWidth < 768
     ? "15px 4%"
     : "20px 6%",
           
@@ -802,12 +788,7 @@ justifyContent: "center",
 initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, scale: 1, }} transition={{ duration: 1.2, ease: "easeOut", }} viewport={{ once: false, amount: 0.2 }}
 
         style={{
-          padding:
-isMobile
-? "100px 5% 0"
-: isTablet
-? "110px 6% 0"
-: "120px 6% 0",
+          padding: "120px 6% 0px",
           minHeight: "100dvh",
           display: "flex",
           alignItems: "center",
@@ -843,16 +824,7 @@ isMobile
          
 <h1
   style={{
-    fontSize:
-isMobile
-? "42px"
-: isTablet
-? "70px"
-: "100px",
-
-lineHeight: "1.1",
-wordBreak: "break-word",
-overflowWrap: "break-word",
+    fontSize: isMobile ? "52px" : "100px",
     lineHeight: 1,
     fontWeight: "900",
     textShadow: "0 0 30px rgba(59,130,246,0.4)",
@@ -911,7 +883,7 @@ overflowWrap: "break-word",
             marginBottom: "40px",
           }}
         >
-          {["All", "Coffee", "Drink", "Dessert"].map((cat) => (
+          {["All", "Coffee", "Drink", "Dessert", "Food"].map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
@@ -997,12 +969,7 @@ initial={{ opacity: 0, y: 120, scale: 0.95 }} whileInView={{ opacity: 1, y: 0, s
         style={{
           padding: "0 6% 80px",
           display: "grid",
-          gridTemplateColumns:
-isMobile
-? "1fr"
-: isTablet
-? "repeat(2,1fr)"
-: "repeat(auto-fit,minmax(300px,1fr))",
+          gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
           gap: "30px",
         }}
       >
@@ -1024,7 +991,7 @@ isMobile
               style={{
                 width: "100%",
                 height:
- isMobile
+  window.innerWidth < 768
     ? "220px"
     : "300px",
                 objectFit: "cover",
@@ -1209,10 +1176,7 @@ isMobile
           <div
             style={{
               background: card,
-              padding:
-isMobile
-? "22px"
-: "40px",
+              padding: "40px",
               borderRadius: "30px",
               backdropFilter: "blur(12px)",
               border: "1px solid rgba(255,255,255,0.08)",
@@ -1312,12 +1276,7 @@ isMobile
             textAlign: "center",
             marginBottom: "50px",
             
-fontSize:
-isMobile
-? "34px"
-: isTablet
-? "42px"
-: "50px",
+fontSize: "50px",
 color: "white",
 textShadow: "0 0 25px rgba(59,130,246,0.5)",
 
