@@ -42,7 +42,7 @@ export default function App() {
   const [editingProduct, setEditingProduct] = useState(null);
 
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("Coffee");
 
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
