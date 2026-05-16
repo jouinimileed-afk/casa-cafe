@@ -42,7 +42,7 @@ export default function App() {
   const [editingProduct, setEditingProduct] = useState(null);
 
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("Coffee");
+  const [filter, setFilter] = useState("All");
 
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
@@ -925,7 +925,12 @@ textAlign: isMobile ? "center" : "left",
             marginBottom: "40px",
           }}
         >
-          {["All", "Coffee", "Drink", "Dessert", "Food"].map((cat) => (
+          {[
+  "Coffee",
+  "Drink",
+  "Dessert",
+  "Food",
+].map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
