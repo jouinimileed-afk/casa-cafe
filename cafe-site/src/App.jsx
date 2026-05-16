@@ -319,19 +319,16 @@ if (!/^[0-9]{8}$/.test(customerPhone)) {
 
 
 
-  const filteredProducts = products.filter((p) => {
-  const matchCategory =
-    filter === "All"
-      ? true
-      : p.category?.trim() === filter.trim();
-
-  const matchSearch =
-    p.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
-  return matchCategory && matchSearch;
-});
+  const filteredProducts =
+  filter === "All"
+    ? products
+    : products.filter(
+        (p) =>
+          p.category === filter &&
+          p.name
+            .toLowerCase()
+            .includes(search.toLowerCase())
+      );
 
   const card = dark
     ? "rgba(15,23,42,0.72)"
